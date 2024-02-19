@@ -10,14 +10,14 @@ async function Home() {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.mainHeading}>Latest Content:</h1>
-      {blogPostList.map((blogPost) => {
+      {blogPostList.map(({ slug, title, abstract, publishedOn }) => {
         return (
           <BlogSummaryCard
-            key={blogPost.slug}
-            slug={blogPost.slug}
-            title={blogPost.title}
-            abstract={blogPost.abstract}
-            publishedOn={blogPost.publishedOn}
+            key={slug}
+            slug={slug}
+            title={title}
+            abstract={abstract}
+            publishedOn={publishedOn}
           />
         );
       })}
