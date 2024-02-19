@@ -78,12 +78,8 @@ function CircularColorsDemo() {
           <dd>{timeElapsed}</dd>
         </dl>
         <div className={styles.actions}>
-          <button>
-            {isPlaying ? (
-              <Pause onClick={togglePlay} />
-            ) : (
-              <Play onClick={togglePlay} />
-            )}
+          <button onClick={togglePlay}>
+            {isPlaying ? <Pause /> : <Play />}
             <VisuallyHidden>{isPlaying ? "Pause" : "Play"}</VisuallyHidden>
           </button>
           <button>
