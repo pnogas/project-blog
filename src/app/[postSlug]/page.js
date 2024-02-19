@@ -7,6 +7,7 @@ import styles from "./postSlug.module.css";
 import { loadBlogPost } from "@/helpers/file-helpers";
 import { BLOG_TITLE } from "@/constants";
 import CodeSnippet from "@/components/CodeSnippet";
+import DivisionGroupsDemo from "@/components/DivisionGroupsDemo";
 
 export async function generateMetadata({ params }) {
   const { frontmatter } = await loadBlogPost(params.postSlug);
@@ -19,7 +20,6 @@ export async function generateMetadata({ params }) {
 
 async function BlogPost({ params }) {
   const { frontmatter, content } = await loadBlogPost(params.postSlug);
-
   return (
     <article className={styles.wrapper}>
       <BlogHero
@@ -31,6 +31,7 @@ async function BlogPost({ params }) {
           source={content}
           components={{
             pre: CodeSnippet,
+            DivisionGroupsDemo,
           }}
         />
       </div>
