@@ -2,12 +2,18 @@ import React from "react";
 import { Work_Sans, Spline_Sans_Mono } from "next/font/google";
 import clsx from "clsx";
 
-import { LIGHT_TOKENS, DARK_TOKENS, BLOG_TITLE } from "@/constants";
+import {
+  LIGHT_TOKENS,
+  DARK_TOKENS,
+  BLOG_TITLE,
+  COOKIE_THEME_KEY,
+} from "@/constants";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./styles.css";
 import RespectMotionPreferences from "@/components/RespectMotionPreferences";
+import { cookies } from "next/headers";
 
 const mainFont = Work_Sans({
   subsets: ["latin"],
@@ -28,8 +34,8 @@ export const metadata = {
 };
 
 function RootLayout({ children }) {
-  // TODO: Dynamic theme depending on user preference
-  const theme = "light";
+  const userTheme = cookies().get(COOKIE_THEME_KEY);
+  const theme = userTheme?.value || "light";
 
   return (
     <RespectMotionPreferences>
